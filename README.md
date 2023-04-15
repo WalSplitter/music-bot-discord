@@ -28,3 +28,11 @@ CLIENT_ID=xxx
 
 # Start Bot
 Run CMD command "node ."
+
+
+# Source 
+- tutorial - https://www.youtube.com/watch?v=3Iegimr8Qc0
+- ffmpeg - https://www.ffmpeg.org/download.html
+- 7Zip - https://www.7-zip.org/download.html
+- NodeJS - https://nodejs.org/en/download/
+- VS Code - https://code.visualstudio.com/
