@@ -57,7 +57,7 @@ client.on("interactionCreate", async interaction => {
     if(!command) return;
 
     try
-    {
+    {        
         await command.execute({client, interaction});
     }
     catch(error)

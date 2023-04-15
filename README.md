@@ -23,3 +23,8 @@ CLIENT_ID=xxx
 - pause  - pauses the current song
 - resume - resumes playing the current song
 - exit   - kicks the bot from the voice channel
+- summon - adds bot to specific voice channel
+
+
+# Start Bot
+Run CMD command "node ."

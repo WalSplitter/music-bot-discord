@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
-const { MessageEmbed } = require("discord.js")
+const { EmbedBuilder } = require("discord.js")
 const { QueryType } = require("discord-player")
 
 module.exports = {
@@ -30,13 +30,18 @@ module.exports = {
         // Make sure the user is inside a voice channel
 		if (!interaction.member.voice.channel) return interaction.reply("You need to be in a Voice Channel to play a song.");
 
-        // Create a play queue for the server
-		const queue = await client.player.createQueue(interaction.guild);
+        // Create a play queue for the server		
+        //https://discord-player.js.org/docs/guides/migrating#queue-creation-changes
+        const queue = await client.player.nodes.create(interaction.guild, {
+            volume: 50,
+            selfDeaf: true
+        });
 
         // Wait until you are connected to the channel
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel)
 
-		let embed = new MessageEmbed()
+        //https://stackoverflow.com/questions/73028854/discord-js-v13-code-breaks-when-upgrading-to-v14
+		let embed = new EmbedBuilder();
 
 		if (interaction.options.getSubcommand() === "song") {
             let url = interaction.options.getString("url")
@@ -103,7 +108,8 @@ module.exports = {
 		}
 
         // Play the song
-        if (!queue.playing) await queue.play()
+        //if (!queue.playing) await queue.play();
+        if (!queue.playing) await queue.node.play();
         
         // Respond with the embed containing information about the player
         await interaction.reply({

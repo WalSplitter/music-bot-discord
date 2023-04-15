@@ -7,10 +7,10 @@ module.exports = {
         .setDescription("shows first 10 songs in the queue"),
 
     execute: async ({ client, interaction }) => {
-        const queue = client.player.getQueue(interaction.guildId)
+        const queue = client.player.nodes.get(interaction.guildId)
 
         // check if there are songs in the queue
-        if (!queue || !queue.playing)
+        if (!queue || !queue.node.isPlaying())
         {
             await interaction.reply("There are no songs in the queue");
             return;
@@ -22,7 +22,7 @@ module.exports = {
         }).join("\n")
 
         // Get the current song
-        const currentSong = queue.current
+        const currentSong = queue.currentTrack
 
         await interaction.reply({
             embeds: [
