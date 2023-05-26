@@ -42,9 +42,7 @@ module.exports = {
         
 
         
-		if (interaction.options.getSubcommand() === "song") {
-            
-            
+		if (interaction.options.getSubcommand() === "song") {            
             let url = interaction.options.getString("url", true);
 
             /*
@@ -112,20 +110,29 @@ module.exports = {
             
             // Add the tracks to the queue
             const playlist = result.playlist
-            await queue.addTracks(result.tracks)
+
+            console.log('Debugger Logging in "play.js" - playlist variable: ' + playlist);
+            console.log('Debugger Logging in "play.js" - result.tracks variable: ' + JSON.stringify(result.tracks));
+
+            await queue.addTrack(result.tracks);
+            
             embed
-                .setDescription(`**${result.tracks.length} songs from [${playlist.title}](${playlist.url})** have been added to the Queue`)
-                .setThumbnail(playlist.thumbnail)
+                .setDescription(`**${result.tracks.length} songs from [${playlist.title}](${playlist.url})** have been added to the Queue`);
 
 		} 
         else if (interaction.options.getSubcommand() === "search") {
 
             // Search for the song using the discord-player
-            let url = interaction.options.getString("searchterms")
+            let url = interaction.options.getString("searchterms");
+
+            console.log('Debugger Logging in "play.js" - searchterms: ' + url);
+
             const result = await client.player.search(url, {
                 requestedBy: interaction.user,
                 searchEngine: QueryType.AUTO
             })
+
+            console.log('Debugger Logging in "play.js" - found tracks: ' + result.tracks.length);
 
             // finish if no tracks were found
             if (result.tracks.length === 0)
@@ -134,6 +141,8 @@ module.exports = {
             // Add the track to the queue
             const song = result.tracks[0]
             await queue.addTrack(song)
+
+            
             embed
                 .setDescription(`**[${song.title}](${song.url})** has been added to the Queue`)
                 .setThumbnail(song.thumbnail)

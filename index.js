@@ -4,7 +4,7 @@ const {REST} = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { Player } = require("discord-player");
-//const { YouTubeExtractor } = require('@discord-player/extractor');
+const { YouTubeExtractor } = require('@discord-player/extractor');
 
 const fs = require('fs');
 const path = require('path');
@@ -31,14 +31,14 @@ for(const file of commandFiles)
 
 // Add the player on the client
 client.player = new Player(client, {
-    //searchEngine: YouTubeExtractor.identifier,
+    searchEngine: YouTubeExtractor.identifier,
     ytdlOptions: {
         quality: "highestaudio",
         highWaterMark: 1 << 25
     }
 });
 
-//client.player.extractors.register(YouTubeExtractor);
+client.player.extractors.register(YouTubeExtractor);
 
 client.on("ready", () => {
     // Get all ids of the servers
