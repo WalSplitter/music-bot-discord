@@ -138,15 +138,40 @@ module.exports = {
             if (result.tracks.length === 0)
                 return interaction.editReply("No results")
             
-            // Add the track to the queue
-            const song = result.tracks[0]
-            await queue.addTrack(song)
+
+            let foundShortTrack = null;
+
+            for (let index = 0; index < result.tracks.length; index++) {
+                const track = result.tracks[index];
+                const durationMilliseconds = track.durationMS;
+
+                //10 Minutes = 600000 MS
+                if (durationMilliseconds <= 600000) {
+                    // Add the track to the queue
+                    foundShortTrack = track;
+                    break;
+                }
+                
+            }
+
+            //fallback - use first found track
+            if (!foundShortTrack) {
+                // Add the track to the queue
+                foundShortTrack = result.tracks[0];
+            }
+
+            
+            //const song = result.tracks[0]
+
+            console.log('Debugger Logging in "play.js" - line 144: ' + result.tracks[0].durationMS);
+
+            await queue.addTrack(foundShortTrack)
 
             
             embed
-                .setDescription(`**[${song.title}](${song.url})** has been added to the Queue`)
-                .setThumbnail(song.thumbnail)
-                .setFooter({ text: `Duration: ${song.duration}`})
+                .setDescription(`**[${foundShortTrack.title}](${foundShortTrack.url})** has been added to the Queue`)
+                .setThumbnail(foundShortTrack.thumbnail)
+                .setFooter({ text: `Duration: ${foundShortTrack.duration}`})
 		}
 
         
