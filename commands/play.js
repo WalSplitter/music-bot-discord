@@ -84,15 +84,27 @@ module.exports = {
 
             // Add the track to the queue
             const song = result.tracks[0]
+            let foundShortTrack = null;
+
+            const durationMilliseconds = song.durationMS;
+
+            //10 Minutes = 600000 MS
+            if (durationMilliseconds <= 600000) {
+                // Add the track to the queue
+                    foundShortTrack = song;
+            }
 
 
             //await client.player.play(song);
+            if (foundShortTrack === null) {
+                return interaction.reply("No results");
+            }
 
-            await queue.addTrack(song)
+            await queue.addTrack(foundShortTrack)
             embed
-                .setDescription(`**[${song.title}](${song.url})** has been added to the Queue`)
-                .setThumbnail(song.thumbnail)
-                .setFooter({ text: `Duration: ${song.duration}`})
+                .setDescription(`**[${foundShortTrack.title}](${foundShortTrack.url})** has been added to the Queue`)
+                .setThumbnail(foundShortTrack.thumbnail)
+                .setFooter({ text: `Duration: ${foundShortTrack.duration}`})
         
 
 		}
@@ -114,10 +126,33 @@ module.exports = {
             console.log('Debugger Logging in "play.js" - playlist variable: ' + playlist);
             console.log('Debugger Logging in "play.js" - result.tracks variable: ' + JSON.stringify(result.tracks));
 
-            await queue.addTrack(result.tracks);
+            let validatedTracks = [];
+
+            for (let index = 0; index < result.tracks.length; index++) {
+                const validationTrack = result.tracks[index];
+                const durationMilliseconds = validationTrack.durationMS;
+
+                //10 Minutes = 600000 MS
+                if (durationMilliseconds <= 600000) {
+                    validatedTracks.push(validationTrack);
+                    console.log('playlist for loop index: ' + index + ' and found track: ' + validationTrack);
+                    //await queue.addTrack(validationTrack);
+                }                
+            }
+
             
-            embed
-                .setDescription(`**${result.tracks.length} songs from [${playlist.title}](${playlist.url})** have been added to the Queue`);
+            console.log('playlist queue: ' + queue);
+            console.log('playlist queue tracks: ' + queue.tracks);
+            
+            await queue.addTrack(validatedTracks);
+
+            if (playlist !== null) {
+                embed
+                .setDescription(`**${validatedTracks.length} songs from [${playlist.title}](${playlist.url})** have been added to the Queue`);
+            } else {
+                embed
+                .setDescription(`**${validatedTracks.length} songs have been added to the Queue`);
+            }           
 
 		} 
         else if (interaction.options.getSubcommand() === "search") {
@@ -164,6 +199,7 @@ module.exports = {
             //const song = result.tracks[0]
 
             console.log('Debugger Logging in "play.js" - line 144: ' + result.tracks[0].durationMS);
+            console.log('Debugger Logging in "play.js" - line 145: ' + result.tracks[0].url);
 
             await queue.addTrack(foundShortTrack)
 
