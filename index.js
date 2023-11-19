@@ -33,7 +33,8 @@ for(const file of commandFiles)
 client.player = new Player(client, {
     searchEngine: YouTubeExtractor.identifier,
     ytdlOptions: {
-        quality: "highestaudio",
+        //quality: "highestaudio",
+        quality: "lowestaudio",
         highWaterMark: 1 << 25
     }
 });
