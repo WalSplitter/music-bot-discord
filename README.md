@@ -16,8 +16,29 @@ CLIENT_ID=xxx
 - play
   - song {url}       - plays the song from the youtube url
   - search {keyword} - searches for the keyword on youtube and plays the first result
-  - playlist {url}   - plays the playlist from url
-
+- soundtracks
+  - barde
+  - dorf
+  - doom
+  - dramatik
+  - entspannt
+  - erkunden
+  - freude
+  - hinterhalt
+  - höhle
+  - krieg
+  - küste
+  - lagerfeuer
+  - markt
+  - monster
+  - party
+  - schlacht
+  - schmiede
+  - taverne
+  - training
+  - wald
+  - warten
+  - saufen
 - skip   - Skips the current song
 - queue  - Displays the first 10 songs in the queue
 - pause  - pauses the current song
