@@ -13,6 +13,11 @@ module.exports = {
 		)
         .addSubcommand(subcommand =>
 			subcommand
+				.setName("doom")
+				.setDescription("The Only Thing They Fear Is You!")				
+		)
+        .addSubcommand(subcommand =>
+			subcommand
 				.setName("dorf")
 				.setDescription("Spielt eine festgelegte Dorf-Musik ab.")				
 		)
@@ -78,6 +83,11 @@ module.exports = {
 		)
         .addSubcommand(subcommand =>
 			subcommand
+				.setName("saufen")
+				.setDescription("Alliance Taverns - Music & Ambience - World of Warcraft")				
+		)
+        .addSubcommand(subcommand =>
+			subcommand
 				.setName("schlacht")
 				.setDescription("Spielt Kampf Musik ab.")				
 		)
@@ -110,11 +120,6 @@ module.exports = {
 			subcommand
 				.setName("warten")
 				.setDescription("Warte-Musik")				
-		)
-        .addSubcommand(subcommand =>
-			subcommand
-				.setName("doom")
-				.setDescription("The Only Thing They Fear Is You!")				
 		),
 	execute: async ({ client, interaction }) => {
         // Make sure the user is inside a voice channel
@@ -169,7 +174,8 @@ module.exports = {
             'taverne': 'https://www.youtube.com/watch?v=JyyQlYRqvRs',
             'training': 'https://www.youtube.com/watch?v=vK4gv11PTI8',
             'wald': 'https://www.youtube.com/watch?v=4Y6n-1XQSfE',
-            'warten': 'https://www.youtube.com/watch?v=DykZEOV5wD4&t'
+            'warten': 'https://www.youtube.com/watch?v=DykZEOV5wD4&t',
+            'saufen': 'https://www.youtube.com/watch?v=Oeo2VCCtUZQ'
         };
 
         let url = soundTrackUrlList[interaction.options.getSubcommand()];
