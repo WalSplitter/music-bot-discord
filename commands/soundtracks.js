@@ -111,6 +111,11 @@ module.exports = {
 				.setName("training")
 				.setDescription("Training Training Training!")				
 		)
+		.addSubcommand(subcommand =>
+			subcommand
+				.setName("vietnam")
+				.setDescription("Jon Longbow's Flashback-Song.")				
+		)
         .addSubcommand(subcommand =>
 			subcommand
 				.setName("wald")
@@ -175,7 +180,8 @@ module.exports = {
             'training': 'https://www.youtube.com/watch?v=vK4gv11PTI8',
             'wald': 'https://www.youtube.com/watch?v=4Y6n-1XQSfE',
             'warten': 'https://www.youtube.com/watch?v=DykZEOV5wD4&t',
-            'saufen': 'https://www.youtube.com/watch?v=Oeo2VCCtUZQ'
+            'saufen': 'https://www.youtube.com/watch?v=Oeo2VCCtUZQ',
+			'vietnam': 'https://www.youtube.com/watch?v=ZWijx_AgPiA'
         };
 
         let url = soundTrackUrlList[interaction.options.getSubcommand()];
@@ -205,6 +211,7 @@ module.exports = {
                 .setFooter({ text: `Duration: ${song.duration}`});
 
             if (currentSong) {
+				console.log('3');
                 queue.node.skip();
             }
 

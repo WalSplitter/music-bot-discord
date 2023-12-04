@@ -39,6 +39,7 @@ CLIENT_ID=xxx
   - wald
   - warten
   - saufen
+  - vietnam
 - skip   - Skips the current song
 - queue  - Displays the first 10 songs in the queue
 - pause  - pauses the current song
