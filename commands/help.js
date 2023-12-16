@@ -35,7 +35,7 @@ module.exports = {
         {   
             embed
                 .setDescription(`Hier eine Auflistung aller Kern Kommandos: '**command**', '**play**', '**ambience**', '**classic**' & '**mood**'`)
-                .setFooter({ text: `Für weitere Hilfe, wenden Sie sich an **Michael Großhauser**...`});
+                .setFooter({ text: `Für weitere Hilfe, wenden Sie sich an Michael Großhauser...`});
 
             // Respond with the embed containing information about the player
             await interaction.reply({
