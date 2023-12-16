@@ -4,7 +4,7 @@ const { QueryType } = require("discord-player")
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("soundtracks")
+		.setName("ambience")
 		.setDescription("Festgelegte Soundtracks für DnD!")
 		.addSubcommand(subcommand =>
 			subcommand
@@ -13,27 +13,22 @@ module.exports = {
 		)
         .addSubcommand(subcommand =>
 			subcommand
-				.setName("doom")
-				.setDescription("The Only Thing They Fear Is You!")				
-		)
-        .addSubcommand(subcommand =>
-			subcommand
 				.setName("dorf")
 				.setDescription("Spielt eine festgelegte Dorf-Musik ab.")				
 		)
         .addSubcommand(subcommand =>
 			subcommand
-				.setName("dramatik")
+				.setName("erdrückend")
 				.setDescription("Spielt festgelegte dramatische Musik ab.")				
 		)
         .addSubcommand(subcommand =>
 			subcommand
-				.setName("entspannt")
+				.setName("wandern")
 				.setDescription("Spielt festgelegte entspannte Musik ab.")				
 		)
         .addSubcommand(subcommand =>
 			subcommand
-				.setName("erkunden")
+				.setName("abenteuer")
 				.setDescription("Spielt festgelegtes Erkundungs-Musik ab.")				
 		)
         .addSubcommand(subcommand =>
@@ -70,7 +65,7 @@ module.exports = {
 			subcommand
 				.setName("markt")
 				.setDescription("Spielt festgelegte Markt-Hintergrund Geräusche ab.")				
-		)
+		)		
         .addSubcommand(subcommand =>
 			subcommand
 				.setName("monster")
@@ -83,18 +78,8 @@ module.exports = {
 		)
         .addSubcommand(subcommand =>
 			subcommand
-				.setName("saufen")
-				.setDescription("Alliance Taverns - Music & Ambience - World of Warcraft")				
-		)
-        .addSubcommand(subcommand =>
-			subcommand
-				.setName("schlacht")
+				.setName("krieg-2")
 				.setDescription("Spielt Kampf Musik ab.")				
-		)
-        .addSubcommand(subcommand =>
-			subcommand
-				.setName("schmiede")
-				.setDescription("Spielt Schieden-Geräusche ab.")				
 		)
         .addSubcommand(subcommand =>
 			subcommand
@@ -108,23 +93,13 @@ module.exports = {
 		)
         .addSubcommand(subcommand =>
 			subcommand
-				.setName("training")
-				.setDescription("Training Training Training!")				
-		)
-		.addSubcommand(subcommand =>
-			subcommand
-				.setName("vietnam")
-				.setDescription("Jon Longbow's Flashback-Song.")				
-		)
-        .addSubcommand(subcommand =>
-			subcommand
 				.setName("wald")
 				.setDescription("Spielt Wald-Geräusche ab.")				
 		)
-        .addSubcommand(subcommand =>
+		.addSubcommand(subcommand =>
 			subcommand
-				.setName("warten")
-				.setDescription("Warte-Musik")				
+				.setName("goblin-dungeon")
+				.setDescription("Spielt dark dungeon ambience ab.")				
 		),
 	execute: async ({ client, interaction }) => {
         // Make sure the user is inside a voice channel
@@ -160,28 +135,24 @@ module.exports = {
         const soundTrackUrlList = {
             'barde': 'https://www.youtube.com/watch?v=M0pOMVCUY50',
             'dorf': 'https://www.youtube.com/watch?v=8u9ZC8WLIiU',
-            'doom': 'https://www.youtube.com/watch?v=kpnW68Q8ltc',
-            'dramatik': 'https://www.youtube.com/watch?v=RPkHu8M_U4c',
-            'entspannt': 'https://www.youtube.com/watch?v=Xsj6prK43nY',
-            'erkunden': 'https://www.youtube.com/watch?v=Y4vSLXjxImY',
+            'erdrückend': 'https://www.youtube.com/watch?v=RPkHu8M_U4c',
+            'wandern': 'https://www.youtube.com/watch?v=Xsj6prK43nY',
+            'abenteuer': 'https://www.youtube.com/watch?v=Y4vSLXjxImY',
             'freude': 'https://www.youtube.com/watch?v=wo_T9Kx3p4s',
             'hinterhalt': 'https://www.youtube.com/watch?v=WW4bdFhcZgw',
             'höhle': 'https://www.youtube.com/watch?v=_8A8N9BI6T4',
             'krieg': 'https://www.youtube.com/watch?v=0rl7AatkjfA',
+			'krieg-2': 'https://www.youtube.com/watch?v=_YpKEpF0oxo',
             'küste': 'https://www.youtube.com/watch?v=4W2EfqdOmiI',
             'lagerfeuer': 'https://www.youtube.com/watch?v=8tWmmhhJEjw',
-            'markt': 'https://www.youtube.com/watch?v=Ch4rFfqd5BQ',
+            'markt': 'https://www.youtube.com/watch?v=Ch4rFfqd5BQ',			
             'monster': 'https://www.youtube.com/watch?v=KU5EzBErrZ4',
-            'party': 'https://www.youtube.com/watch?v=x3skYa2i6Bg',
-            'schlacht': 'https://www.youtube.com/watch?v=_YpKEpF0oxo',
+            'party': 'https://www.youtube.com/watch?v=x3skYa2i6Bg',            
             'schmiede': 'https://www.youtube.com/watch?v=gS0sNL82Tvk',
             'stadt': 'https://www.youtube.com/watch?v=ddMSMwKQkKI',
-            'taverne': 'https://www.youtube.com/watch?v=JyyQlYRqvRs',
-            'training': 'https://www.youtube.com/watch?v=vK4gv11PTI8',
+            'taverne': 'https://www.youtube.com/watch?v=JyyQlYRqvRs',            
             'wald': 'https://www.youtube.com/watch?v=4Y6n-1XQSfE',
-            'warten': 'https://www.youtube.com/watch?v=DykZEOV5wD4&t',
-            'saufen': 'https://www.youtube.com/watch?v=Oeo2VCCtUZQ',
-			'vietnam': 'https://www.youtube.com/watch?v=ZWijx_AgPiA'
+			'goblin-dungeon': 'https://www.youtube.com/watch?v=bxoRRobHtGM'
         };
 
         let url = soundTrackUrlList[interaction.options.getSubcommand()];
