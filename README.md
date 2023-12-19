@@ -7,9 +7,19 @@ TOKEN=xxx
 CLIENT_ID=xxx
 ```
 
+<br />
+<br />
+<br />
+<br />
+
 # Running with docker
 
 `docker run -e TOKEN=<your_token_here> -e CLIENT_ID=<your_client_id_here> -d pabolo02345/discord-js-music-bot`
+
+<br />
+<br />
+<br />
+<br />
 
 # Commands
 
@@ -57,10 +67,26 @@ CLIENT_ID=xxx
   - song {url}       -> plays the song from the youtube url
   - search {keyword} -> searches for the keyword on youtube and plays the first result
 
+<br />
+<br />
+<br />
+<br />
 
 # Start Bot
 Run CMD command "node ."
 
+<br />
+<br />
+<br />
+<br />
+
+# Free Server to host this bot
+- SillyDev - https://panel.sillydev.co.uk
+
+<br />
+<br />
+<br />
+<br />
 
 # Source 
 - tutorial - https://www.youtube.com/watch?v=3Iegimr8Qc0
