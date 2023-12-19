@@ -13,39 +13,49 @@ CLIENT_ID=xxx
 
 # Commands
 
-- play
-  - song {url}       - plays the song from the youtube url
-  - search {keyword} - searches for the keyword on youtube and plays the first result
-- soundtracks
+- ambience      -> hardcoded youtube songs to create a fitting ambience
   - barde
   - dorf
-  - doom
-  - dramatik
-  - entspannt
-  - erkunden
+  - erdrückend
+  - wandern
+  - abenteuer
   - freude
   - hinterhalt
   - höhle
   - krieg
+  - krieg-2
   - küste
   - lagerfeuer
   - markt
   - monster
   - party
-  - schlacht
   - schmiede
+  - stadt
   - taverne
-  - training
   - wald
+- classic       -> hardcoded youtube songs to create a fitting classic ambience
+  - lacrimosa
+  - dies-irae
+- command
+  - skip        -> Skips the current song
+  - queue       -> Displays the first 10 songs in the queue
+  - pause       -> pauses the current song
+  - resume      -> resumes playing the current song
+  - exit        -> kicks the bot from the voice channel
+  - summon      -> adds bot to specific voice channel
+- help          -> shows all current top commands
+- mood          -> hardcoded youtube songs to set a fitting mood
+  - building
+  - doom
+  - martial-arts
+  - training
   - warten
   - saufen
   - vietnam
-- skip   - Skips the current song
-- queue  - Displays the first 10 songs in the queue
-- pause  - pauses the current song
-- resume - resumes playing the current song
-- exit   - kicks the bot from the voice channel
-- summon - adds bot to specific voice channel
+  - haselnüsse
+- play
+  - song {url}       -> plays the song from the youtube url
+  - search {keyword} -> searches for the keyword on youtube and plays the first result
 
 
 # Start Bot
