@@ -30,7 +30,19 @@ module.exports = {
         let queue = null;
 
         if (lastQueue && lastQueue.isPlaying()) {
+            console.log(' - lastQueue found.')
             queue = lastQueue;
+
+            /*console.log(' - delete lastQueue.')
+            queue.delete();
+
+            console.log(' - create new queue.')
+            queue = await client.player.nodes.create(interaction.guild, {
+                repeatMode: 1
+            });
+
+            console.log(' - connect new queue.')
+            await queue.connect(interaction.member.voice.channel)*/
         } else {
             // Create a play queue for the server		
             //https://discord-player.js.org/docs/guides/migrating#queue-creation-changes
@@ -41,7 +53,9 @@ module.exports = {
 
         const currentSong = queue.currentTrack;
 
+        //https://discord-player.js.org/docs/discord-player/class/GuildQueue?scrollTo=p-currentTrack
         if(currentSong) {            
+            console.log(' - current song skip event.')
             await queue.removeTrack(currentSong);
         }
         
@@ -66,8 +80,11 @@ module.exports = {
             if (result.tracks.length === 0)
                 return interaction.reply("No results")
 
+            console.log(' - found tracks: ' + result.tracks.length);
+
             // Add the track to the queue
             song = result.tracks[0];
+            queue.addTrack(result.tracks[0]);
 		}
         else if (interaction.options.getSubcommand() === "search") {
 
@@ -90,8 +107,8 @@ module.exports = {
 
             // Add the track to the queue
             song = result.tracks[0];            
-		}
-                
+		}        
+
         // Play the song
         //if (!queue.playing) await queue.play();
         //if (!queue.playing) await queue.node.play();    
@@ -103,6 +120,9 @@ module.exports = {
                 .setFooter({ text: `Duration: ${song.duration}`})
 
         if (currentSong) {
+            console.log(' - skip current song, after new play');            
+            //queue.node.remove(currentSong);
+            //queue.node.insert(song, 0);
             queue.node.skip();
         }
 
