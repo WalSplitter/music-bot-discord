@@ -4,10 +4,14 @@ const {REST} = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { Player } = require("discord-player");
-const { YouTubeExtractor } = require('@discord-player/extractor');
+//const { YouTubeExtractor } = require('@discord-player/extractor');
+const { YoutubeiExtractor } = require("discord-player-youtubei")
+
 
 const fs = require('fs');
 const path = require('path');
+
+//const player = useMainPlayer();
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildVoiceStates]
@@ -30,7 +34,7 @@ for(const file of commandFiles)
 }
 
 // Add the player on the client
-client.player = new Player(client, {
+/*client.player = new Player(client, {
     searchEngine: YouTubeExtractor.identifier,
     ytdlOptions: {
         //quality: "highestaudio",
@@ -39,7 +43,19 @@ client.player = new Player(client, {
     }
 });
 
-client.player.extractors.register(YouTubeExtractor);
+client.player.extractors.register(YouTubeExtractor);*/
+
+client.player = new Player(client, {
+    searchEngine: YoutubeiExtractor.identifier,
+    ytdlOptions: {
+        //quality: "highestaudio",
+        quality: "lowestaudio",
+        highWaterMark: 1 << 25
+    }
+});
+
+client.player.extractors.register(YoutubeiExtractor);
+
 
 client.on("ready", () => {
     // Get all ids of the servers
