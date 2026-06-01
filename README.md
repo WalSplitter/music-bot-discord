@@ -1,96 +1,90 @@
-# Basic discord music bot using discord js and discord-player
+# Music Bot
 
-After you have cloned the repo make sure to create a `.env` file with the `TOKEN` and `CLIENT_ID` specified for example
+![Project Icon](Icons/Lauchboy.ico)
 
+A compact Discord music bot built with `discord.js` and `discord-player`. This repository includes ready-to-use command handlers for music playback, ambience presets, mood playlists, and basic queue control.
+
+## 🚀 Overview
+This project is designed for developers who want a small, easy-to-customize Discord music bot.
+
+- Plays YouTube audio by URL or search query
+- Includes ambient and mood-based playlist commands
+- Supports playback controls like pause, resume, skip, queue, disconnect, and summon
+- Organized command modules under `commands/` for quick editing
+
+## 📁 Repository Contents
+- `index.js` — main bot entry point
+- `commands/` — command handler modules
+- `Icons/` — project icon and assets
+- `package.json` / `package-lock.json` — Node dependency metadata
+- `.env` — environment configuration file (not committed)
+- `Lauchboy.exe` — Windows launcher executable
+- `Musik Bot starten.bat` — Windows batch script to launch the bot
+- `LICENSE` — project license
+- `1722158080321-base.js` — additional project file included in the repository
+
+## ✅ Features
+- `play` command for YouTube links and search terms
+- `ambience`, `classic`, and `mood` commands for themed playlists
+- `command` set for player control: `skip`, `queue`, `pause`, `resume`, `exit`, `summon`
+- `help` command to list available bot commands
+- Easy command structure for customization and extension
+
+## ⚙️ Setup
+1. Clone the repository.
+2. Create a `.env` file in the project root with these values:
+
+```env
+TOKEN=your_discord_bot_token
+CLIENT_ID=your_application_client_id
 ```
-TOKEN=xxx
-CLIENT_ID=xxx
+
+3. Install dependencies:
+
+```bash
+npm install
 ```
 
-<br />
-<br />
-<br />
-<br />
+4. Run the bot:
 
-# Running with docker
+```bash
+node .
+```
 
-`docker run -e TOKEN=<your_token_here> -e CLIENT_ID=<your_client_id_here> -d pabolo02345/discord-js-music-bot`
+### Windows launch options
+- Double-click `Musik Bot starten.bat`
+- Run `Lauchboy.exe` if you prefer a Windows launcher
 
-<br />
-<br />
-<br />
-<br />
+## 📌 Requirements
+- Node.js 16 or newer
+- `ffmpeg` installed on your system or available via `ffmpeg-static`
+- A Discord bot token and application client ID
 
-# Commands
+## 📖 Commands
+- `ambience` — ambient YouTube playlists (`commands/ambience.js`)
+- `classic` — classic ambience presets (`commands/classic.js`)
+- `mood` — mood-based playlists (`commands/mood.js`)
+- `play` — play a song by URL or search term (`commands/play.js`)
+- `command` — playback utilities like `skip`, `queue`, `pause`, `resume`, `exit`, `summon` (`commands/command.js`)
+- `help` — displays top-level commands (`commands/help.js`)
 
-- ambience      -> hardcoded youtube songs to create a fitting ambience
-  - barde
-  - dorf
-  - erdrückend
-  - wandern
-  - abenteuer
-  - freude
-  - hinterhalt
-  - höhle
-  - krieg
-  - krieg-2
-  - küste
-  - lagerfeuer
-  - markt
-  - monster
-  - party
-  - schmiede
-  - stadt
-  - taverne
-  - wald
-- classic       -> hardcoded youtube songs to create a fitting classic ambience
-  - lacrimosa
-  - dies-irae
-- command
-  - skip        -> Skips the current song
-  - queue       -> Displays the first 10 songs in the queue
-  - pause       -> pauses the current song
-  - resume      -> resumes playing the current song
-  - exit        -> kicks the bot from the voice channel
-  - summon      -> adds bot to specific voice channel
-- help          -> shows all current top commands
-- mood          -> hardcoded youtube songs to set a fitting mood
-  - building
-  - doom
-  - martial-arts
-  - training
-  - warten
-  - saufen
-  - vietnam
-  - haselnüsse
-- play
-  - song {url}       -> plays the song from the youtube url
-  - search {keyword} -> searches for the keyword on youtube and plays the first result
+## 🧩 Useful Files
+- [index.js](index.js) — main application startup
+- [commands/play.js](commands/play.js)
+- [commands/ambience.js](commands/ambience.js)
+- [commands/classic.js](commands/classic.js)
+- [commands/mood.js](commands/mood.js)
+- [commands/command.js](commands/command.js)
+- [commands/help.js](commands/help.js)
+- [Icons/Lauchboy.ico](Icons/Lauchboy.ico)
 
-<br />
-<br />
-<br />
-<br />
+## 💡 Notes
+- This bot uses `discord-player`, `discord.js`, and YouTube extraction packages.
+- If `ffmpeg` is missing, audio playback will not work correctly.
+- The repository currently includes `package-lock.json`, so installed dependency versions are locked.
 
-# Start Bot
-Run CMD command "node ."
+## 🤝 Contributing
+Contributions are welcome. Please open an issue or submit a pull request with details of your change.
 
-<br />
-<br />
-<br />
-<br />
-
-# Free Server to host this bot
-- SillyDev - https://panel.sillydev.co.uk
-
-<br />
-<br />
-<br />
-<br />
-
-# Source 
-- tutorial - https://www.youtube.com/watch?v=3Iegimr8Qc0
-- ffmpeg - https://www.ffmpeg.org/download.html
-- 7Zip - https://www.7-zip.org/download.html
-- NodeJS - https://nodejs.org/en/download/
-- VS Code - https://code.visualstudio.com/
+## 📜 License
+See [LICENSE](LICENSE) for license details.
