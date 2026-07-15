@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "patch-package"
   },
   "author": "Michael Großhauser",
   "license": "ISC",
   "dependencies": {
-    "@discord-player/extractor": "^7.2.0",
+    "@discord-player/extractor": "^4.5.0",
     "@discordjs/builders": "^1.8.2",
     "@discordjs/opus": "^0.10.0",
     "@discordjs/rest": "^2.3.0",
@@ -29,5 +30,8 @@
   },
   "overrides": {
     "tar": "^7.5.16"
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.1"
   }
 }
